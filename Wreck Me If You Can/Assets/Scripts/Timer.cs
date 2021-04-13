@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class Timer : MonoBehaviour
 {
@@ -20,6 +22,10 @@ public class Timer : MonoBehaviour
     void Update()
     {
         totalTime -= Time.deltaTime;
+        if (totalTime <= 0f)
+        {
+            TransitionGameOver();
+        }
         UpdateLevelTimer(totalTime);
     }
 
@@ -37,5 +43,10 @@ public class Timer : MonoBehaviour
         }
 
         timer.text = minutes.ToString("00") + ":" + seconds.ToString("00");
+    }
+
+    public void TransitionGameOver()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 }
