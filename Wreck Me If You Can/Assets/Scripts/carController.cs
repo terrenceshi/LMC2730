@@ -10,7 +10,7 @@ public class carController : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
     private float currentSteerAngle;
-    private float currentbrakeForce;
+    private float currentBrakeForce;
     private bool isBraking;
 
     [SerializeField] private float motorForce;
@@ -39,14 +39,14 @@ public class carController : MonoBehaviour
     {
         frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
         frontRightWheelCollider.motorTorque = verticalInput * motorForce;
-        currentbrakeForce = isBraking ? brakeForce : 0f;
+        currentBrakeForce = isBraking ? brakeForce : 0f;
         ApplyBraking();       
     }
 
     private void GetInput()
     {
         horizontalInput = Input.GetAxis(HORIZONTAL);
-        verticalInput = Input.GetAxis(VERTICAL);
+        verticalInput = Input.GetAxis(VERTICAL) * -1;
         isBraking = Input.GetKey(KeyCode.Space);
     }
 
@@ -55,7 +55,7 @@ public class carController : MonoBehaviour
         frontRightWheelCollider.brakeTorque = currentBrakeForce;
         frontLeftWheelCollider.brakeTorque = currentBrakeForce;
         rearRightWheelCollider.brakeTorque = currentBrakeForce;
-        frontLeftWheelCollider.brakeTorque = currentBrakeForce;
+        rearLeftWheelCollider.brakeTorque = currentBrakeForce;
 
     }
 
@@ -78,8 +78,12 @@ public class carController : MonoBehaviour
     {
         Vector3 pos;
         Quaternion rot;
-        wheelcollider.GetWorldPose(out pos, out rot);
+        wheelCollider.GetWorldPose(out pos, out rot);
         wheelTransform.rotation = rot;
         wheelTransform.position = pos;
+
+        wheelTransform.rotation *= Quaternion.Euler(0, 0, 90f);
+
+        //Debug.Log("\nrot: " + rot + ", pos: " + pos);
     }
 }
