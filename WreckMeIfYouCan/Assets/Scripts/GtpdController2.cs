@@ -1,9 +1,11 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class carController : MonoBehaviour
+using UnityEngine.Serialization;
+using UnityEngine.UI;
+public class GtpdController2 : MonoBehaviour
 {
+ 
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
 
@@ -27,12 +29,42 @@ public class carController : MonoBehaviour
     [SerializeField] private Transform rearLeftWheelTransform;
     [SerializeField] private Transform rearRightWheelTransform;
 
+    [SerializeField] private Transform player;
+    [SerializeField] private int MoveSpeed = 4;
+    [SerializeField] private int MaxDist = 20;
+    [SerializeField] private int MinDist = 10;
+ 
     private void FixedUpdate()
     {
         GetInput();
         HandleMotor();
         HandleSteering();
         UpdateWheels();
+        
+    }
+
+    private void GetInput()
+    {
+        transform.LookAt(player);
+ 
+        if (Vector3.Distance(transform.position, player.position) >= MinDist)
+        {
+ 
+            //transform.position += transform.forward * (MoveSpeed * Time.deltaTime);
+ 
+            //horizontalInput = Input.GetAxis(HORIZONTAL);
+            //verticalInput = transform.forward * (MoveSpeed * Time.deltaTime);
+ 
+            if (Vector3.Distance(transform.position, player.position) <= MaxDist)
+            {
+                //Here Call any function U want Like Shoot at here or something
+            }
+ 
+        }
+        else
+        {
+            ApplyBraking();
+        }
     }
 
     private void HandleMotor()
@@ -40,17 +72,14 @@ public class carController : MonoBehaviour
         frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
         frontRightWheelCollider.motorTorque = verticalInput * motorForce;
         currentBrakeForce = isBraking ? brakeForce : 0f;
-        ApplyBraking();       
+           
     }
 
-    private void GetInput()
+    private void HandleSteering()
     {
-        horizontalInput = Input.GetAxis(HORIZONTAL);
-        verticalInput = Input.GetAxis(VERTICAL);
-
-        Debug.Log("\nhorizontalInput: " + horizontalInput + ", verticalInput: " + verticalInput);
-
-        isBraking = Input.GetKey(KeyCode.Space);
+        currentSteerAngle = maxSteerAngle * horizontalInput;
+        frontLeftWheelCollider.steerAngle = currentSteerAngle;
+        frontRightWheelCollider.steerAngle = currentSteerAngle;
     }
 
     private void ApplyBraking()
@@ -60,13 +89,6 @@ public class carController : MonoBehaviour
         rearRightWheelCollider.brakeTorque = currentBrakeForce;
         rearLeftWheelCollider.brakeTorque = currentBrakeForce;
 
-    }
-
-    private void HandleSteering()
-    {
-        currentSteerAngle = maxSteerAngle * horizontalInput;
-        frontLeftWheelCollider.steerAngle = currentSteerAngle;
-        frontRightWheelCollider.steerAngle = currentSteerAngle;
     }
 
     private void UpdateWheels()
@@ -89,4 +111,5 @@ public class carController : MonoBehaviour
 
         //Debug.Log("\nrot: " + rot + ", pos: " + pos);
     }
+    
 }
