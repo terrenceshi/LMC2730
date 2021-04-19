@@ -53,7 +53,7 @@ public class GtpdController2 : MonoBehaviour
             //transform.position += transform.forward * (MoveSpeed * Time.deltaTime);
  
             //horizontalInput = Input.GetAxis(HORIZONTAL);
-            //verticalInput = transform.forward * (MoveSpeed * Time.deltaTime);
+            verticalInput = 2 * MoveSpeed;
  
             if (Vector3.Distance(transform.position, player.position) <= MaxDist)
             {
