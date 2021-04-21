@@ -1493,6 +1493,7 @@ GameObject:
   - component: {fileID: 593417733}
   - component: {fileID: 919132148704465960}
   - component: {fileID: 919132148704465959}
+  - component: {fileID: 919132148704465961}
   m_Layer: 8
   m_Name: gtpd_test
   m_TagString: Untagged
@@ -1526,6 +1527,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.04301128, y: 0.028403524, z: 0.014354038}
   m_Center: {x: 0.00010007858, y: 0.030576479, z: -0.10155181}
+--- !u!114 &919132148704465961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148704465958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5913c0215a6c82c42ba3b255cf4d27ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  motorForce: 6000
+  brakeForce: 4000
+  maxSteerAngle: 30
+  frontLeftWheelCollider: {fileID: 1934064132}
+  frontRightWheelCollider: {fileID: 1744621333}
+  rearLeftWheelCollider: {fileID: 2138711775}
+  rearRightWheelCollider: {fileID: 662388183}
+  frontLeftWheelTransform: {fileID: 5777245582834007161}
+  frontRightWheelTransform: {fileID: 9045034325295481718}
+  rearLeftWheelTransform: {fileID: 7210127809728221948}
+  rearRightWheelTransform: {fileID: 4977281649385447940}
+  player: {fileID: 6413892417498062803}
+  MoveSpeed: 4
+  MaxDist: 20
+  MinDist: 10
 --- !u!1 &935952153178712183
 GameObject:
   m_ObjectHideFlags: 0
