@@ -5,11 +5,17 @@ using UnityEngine;
 public class cameraFollow : MonoBehaviour
 {
     [SerializeField] private Vector3 offset;
+    [SerializeField] private float cameraTilt = 10;
     [SerializeField] private Transform target;
     [SerializeField] private float translateSpeed;
     [SerializeField] private float rotationSpeed;
 
-    private void fixedUpdate()
+    void Start()
+    {
+        offset = Quaternion.Euler(cameraTilt, 90, 0) * offset;
+    }
+
+    private void FixedUpdate()
     {
         HandleTranslation();
         HandleRotation();
