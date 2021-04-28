@@ -27,12 +27,22 @@ public class carController : MonoBehaviour
     [SerializeField] private Transform rearLeftWheelTransform;
     [SerializeField] private Transform rearRightWheelTransform;
 
+    public float mass = -0.9f;
+    void Start()
+    {
+        GetComponent<Rigidbody>().centerOfMass = new Vector3(0f, mass, 0f);
+    }
+
     private void FixedUpdate()
     {
         GetInput();
         HandleMotor();
         HandleSteering();
         UpdateWheels();
+        if (Vector3.Dot(transform.up, Vector3.down) > 0){
+            Debug.Log("\nupside down");
+        }
+        
     }
 
     private void HandleMotor()

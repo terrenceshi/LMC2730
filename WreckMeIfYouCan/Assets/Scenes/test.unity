@@ -12672,6 +12672,7 @@ MonoBehaviour:
   frontRightWheelTransform: {fileID: 2526073665211290169}
   rearLeftWheelTransform: {fileID: 4217486208169968563}
   rearRightWheelTransform: {fileID: 1989143101521802059}
+  mass: -0.9
 --- !u!65 &5929386415069283691
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12940,7 +12941,7 @@ Transform:
   m_GameObject: {fileID: 5929386415069283689}
   m_LocalRotation: {x: -0, y: 0.67341316, z: -0, w: -0.7392664}
   m_LocalPosition: {x: 270.3, y: 13.9, z: 180}
-  m_LocalScale: {x: 75, y: 75, z: -100}
+  m_LocalScale: {x: 75, y: 75, z: -75}
   m_Children:
   - {fileID: 353528568}
   - {fileID: 3771103520410006110}
