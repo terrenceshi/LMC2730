@@ -13,6 +13,8 @@ public class carController : MonoBehaviour
     private float currentBrakeForce;
     private bool isBraking;
 
+    [SerializeField] private GameObject GTPD;
+    
     [SerializeField] private float motorForce;
     [SerializeField] private float brakeForce;
     [SerializeField] private float maxSteerAngle;
@@ -27,12 +29,22 @@ public class carController : MonoBehaviour
     [SerializeField] private Transform rearLeftWheelTransform;
     [SerializeField] private Transform rearRightWheelTransform;
 
+    public float mass = -0.9f;
+    void Start()
+    {
+        GetComponent<Rigidbody>().centerOfMass = new Vector3(0f, mass, 0f);
+    }
+
     private void FixedUpdate()
     {
         GetInput();
         HandleMotor();
         HandleSteering();
         UpdateWheels();
+        if (Vector3.Dot(transform.up, Vector3.down) > 0){
+            Debug.Log("\nupside down");
+        }
+        
     }
 
     private void HandleMotor()
@@ -89,5 +101,14 @@ public class carController : MonoBehaviour
         wheelTransform.rotation *= Quaternion.Euler(0, 0, 90f);
 
         //Debug.Log("\nrot: " + rot + ", pos: " + pos);
+    }
+    
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject == GTPD)
+        {
+            Debug.Log("hit");
+            //insert failure scene
+        }
     }
 }
