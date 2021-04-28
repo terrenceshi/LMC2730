@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class defeatCutscene : MonoBehaviour
 {
 	public GameObject Cam1;
 	public GameObject Cam2;
-    //public GameObject Cam3;
-    //public GameObject Cam4;
+
+    public GameObject blackPanel;
+    public Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,18 +20,14 @@ public class defeatCutscene : MonoBehaviour
     }
 
     IEnumerator TheSequence() {
-        //Cam4.SetActive(false);
-        //Cam3.SetActive(false);
+
         Cam2.SetActive(false);
         Cam1.SetActive(true);
     	yield return new WaitForSeconds(6.5f);
     	Cam2.SetActive(true);
     	Cam1.SetActive(false);
-        //yield return new WaitForSeconds(2.15f);
-        //Cam3.SetActive(true);
-        //Cam2.SetActive(false);
-        //yield return new WaitForSeconds(2.1f);
-        //Cam4.SetActive(true);
-        //Cam3.SetActive(false);
+        yield return new WaitForSeconds(6f);
+        anim.SetBool("Fade", true);
+        //yield return new WaitUntil(()=>blackPanel.color.a==1);
     }
 }
