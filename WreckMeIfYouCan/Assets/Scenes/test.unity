@@ -2425,7 +2425,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148704465958}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.0839664, y: 0.057134464, z: 0.21103996}
@@ -13421,6 +13421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4e7147566ab904a8edcd1feb619290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GTPD: {fileID: 919132148704465958}
   motorForce: 4000
   brakeForce: 6000
   maxSteerAngle: 30
