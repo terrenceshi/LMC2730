@@ -60,6 +60,7 @@ public class GtpdController2 : MonoBehaviour
             if (Vector3.Distance(transform.position, player.position) <= MaxDist)
             {
                 //Here Call any function U want Like Shoot at here or something
+                Debug.Log("\nsup");
             }
  
         }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class carController : MonoBehaviour
+public class scriptedController : MonoBehaviour
 {
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
@@ -12,12 +12,12 @@ public class carController : MonoBehaviour
     private float currentSteerAngle;
     private float currentBrakeForce;
     private bool isBraking;
-
-    [SerializeField] private GameObject GTPD;
     
     [SerializeField] private float motorForce;
     [SerializeField] private float brakeForce;
     [SerializeField] private float maxSteerAngle;
+
+    [SerializeField] private int MoveSpeed = 4;
 
     [SerializeField] private WheelCollider frontLeftWheelCollider;
     [SerializeField] private WheelCollider frontRightWheelCollider;
@@ -28,6 +28,8 @@ public class carController : MonoBehaviour
     [SerializeField] private Transform frontRightWheelTransform;
     [SerializeField] private Transform rearLeftWheelTransform;
     [SerializeField] private Transform rearRightWheelTransform;
+
+    [SerializeField] private float totalTime;
 
     public float mass = -0.9f;
     void Start()
@@ -41,9 +43,6 @@ public class carController : MonoBehaviour
         HandleMotor();
         HandleSteering();
         UpdateWheels();
-        if (Vector3.Dot(transform.up, Vector3.down) > 0){
-            //Debug.Log("\nupside down");
-        }
         
     }
 
@@ -57,13 +56,22 @@ public class carController : MonoBehaviour
 
     private void GetInput()
     {
-        horizontalInput = Input.GetAxis(HORIZONTAL);
-        verticalInput = Input.GetAxis(VERTICAL);
-        //verticalInput = 2f;
+        if (isBraking == false)
+        {
+            verticalInput = 2 * MoveSpeed;
+        }
+        else
+        {
+            verticalInput = 0;
+        }
 
-        //Debug.Log("\nhorizontalInput: " + horizontalInput + ", verticalInput: " + verticalInput);
-
-        isBraking = Input.GetKey(KeyCode.Space);
+        totalTime -= Time.deltaTime;
+        if (totalTime <= 0f)
+        {
+            Debug.Log("braking");
+            isBraking = true;
+            
+        }
     }
 
     private void ApplyBraking()
@@ -102,13 +110,5 @@ public class carController : MonoBehaviour
 
         //Debug.Log("\nrot: " + rot + ", pos: " + pos);
     }
-    
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject == GTPD)
-        {
-            Debug.Log("hit");
-            //insert failure scene
-        }
-    }
+
 }
