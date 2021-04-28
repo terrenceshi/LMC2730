@@ -13,6 +13,8 @@ public class carController : MonoBehaviour
     private float currentBrakeForce;
     private bool isBraking;
 
+    [SerializeField] private GameObject GTPD;
+    
     [SerializeField] private float motorForce;
     [SerializeField] private float brakeForce;
     [SerializeField] private float maxSteerAngle;
@@ -99,5 +101,14 @@ public class carController : MonoBehaviour
         wheelTransform.rotation *= Quaternion.Euler(0, 0, 90f);
 
         //Debug.Log("\nrot: " + rot + ", pos: " + pos);
+    }
+    
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject == GTPD)
+        {
+            Debug.Log("hit");
+            //insert failure scene
+        }
     }
 }

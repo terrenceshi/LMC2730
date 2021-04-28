@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -31,7 +32,7 @@ public class GtpdController : MonoBehaviour
 
     public Transform player;
     int MoveSpeed = 4;
-    int MaxDist = 20;
+    int MaxDist = 40;
     int MinDist = 10;
  
  
@@ -45,16 +46,18 @@ public class GtpdController : MonoBehaviour
     void Update()
     {
         transform.LookAt(player);
+        Debug.Log(Vector3.Distance(transform.position, player.position));
  
-        if (Vector3.Distance(transform.position, player.position) >= MinDist)
+        if (Vector3.Distance(transform.position, player.position) <= MaxDist)
         {
  
             transform.position += transform.forward * (MoveSpeed * Time.deltaTime);
  
  
-            if (Vector3.Distance(transform.position, player.position) <= MaxDist)
+            if (Vector3.Distance(transform.position, player.position) <= MinDist)
             {
-                //Here Call any function U want Like Shoot at here or something
+                Debug.Log("arrested");
+                //Arrested Cut Scene
             }
  
         }
