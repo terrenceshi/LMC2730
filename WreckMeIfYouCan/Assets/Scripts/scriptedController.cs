@@ -18,7 +18,7 @@ public class scriptedController : MonoBehaviour
     [SerializeField] private float maxSteerAngle;
 
     [SerializeField] private int MoveSpeed = 4;
-
+    
     [SerializeField] private WheelCollider frontLeftWheelCollider;
     [SerializeField] private WheelCollider frontRightWheelCollider;
     [SerializeField] private WheelCollider rearLeftWheelCollider;
@@ -30,11 +30,15 @@ public class scriptedController : MonoBehaviour
     [SerializeField] private Transform rearRightWheelTransform;
 
     [SerializeField] private float totalTime;
+    [SerializeField] private float waitTime = 0f;
+
+    private float startMovingTime;
 
     public float mass = -0.9f;
     void Start()
     {
         GetComponent<Rigidbody>().centerOfMass = new Vector3(0f, mass, 0f);
+        startMovingTime = totalTime - waitTime;
     }
 
     private void FixedUpdate()
@@ -56,19 +60,26 @@ public class scriptedController : MonoBehaviour
 
     private void GetInput()
     {
-        if (isBraking == false)
-        {
-            verticalInput = 2 * MoveSpeed;
-        }
-        else
-        {
+        totalTime -= Time.deltaTime;
+
+        if(totalTime > startMovingTime) {
             verticalInput = 0;
         }
-
-        totalTime -= Time.deltaTime;
+        else {
+            //Debug.Log("wait time over");
+            if (isBraking == false)
+            {
+                verticalInput = 2 * MoveSpeed;
+            }
+            else
+            {
+                verticalInput = 0;
+            }
+        }
+        
         if (totalTime <= 0f)
         {
-            Debug.Log("braking");
+            
             isBraking = true;
             
         }
