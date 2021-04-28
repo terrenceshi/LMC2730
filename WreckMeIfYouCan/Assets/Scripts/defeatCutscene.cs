@@ -13,6 +13,24 @@ public class defeatCutscene : MonoBehaviour
     public GameObject blackPanel;
     public Animator anim;
 
+    public GameObject grass;
+    public Animator grassAnim;
+
+    public GameObject wreck;
+    public Animator wreckAnim;
+
+    public GameObject gtpd0;
+    public Animator gtpd0Anim;
+
+    public GameObject gtpd1;
+    public Animator gtpd1Anim;
+
+    public GameObject gtpd2;
+    public Animator gtpd2Anim;
+
+    public GameObject gtpd3;
+    public Animator gtpd3Anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +46,12 @@ public class defeatCutscene : MonoBehaviour
     	Cam1.SetActive(false);
         yield return new WaitForSeconds(6f);
         anim.SetBool("Fade", true);
+        grassAnim.SetBool("soundFade", true);
+        gtpd0Anim.SetBool("soundFade", true);
+        gtpd1Anim.SetBool("soundFade", true);
+        gtpd2Anim.SetBool("soundFade", true);
+        gtpd3Anim.SetBool("soundFade", true);
+        wreckAnim.SetBool("soundFade", true);
         //yield return new WaitUntil(()=>blackPanel.color.a==1);
     }
 }
