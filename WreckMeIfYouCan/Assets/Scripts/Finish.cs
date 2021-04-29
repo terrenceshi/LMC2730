@@ -23,7 +23,7 @@ public class Finish : MonoBehaviour
     {
         if (collision.gameObject == player)
         {
-            SceneManager.LoadScene("Win");
+            SceneManager.LoadScene("win");
         }
     }
 }
