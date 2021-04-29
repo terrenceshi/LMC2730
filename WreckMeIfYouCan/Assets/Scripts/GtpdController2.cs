@@ -35,6 +35,10 @@ public class GtpdController2 : MonoBehaviour
     [SerializeField] private int MoveSpeed = 4;
     [SerializeField] private int MaxDist = 20;
     [SerializeField] private int MinDist = 10;
+
+    [SerializeField] private float loseCondition = 5f;
+    [SerializeField] private GameObject blackPanel;
+    [SerializeField] private Animator anim;
  
     private void FixedUpdate()
     {
@@ -60,6 +64,13 @@ public class GtpdController2 : MonoBehaviour
             if (Vector3.Distance(transform.position, player.position) <= MaxDist)
             {
                 //Here Call any function U want Like Shoot at here or something
+                Debug.Log("\nsup");
+                loseCondition -= Time.deltaTime;
+                if(loseCondition <= 0) {
+                    StartCoroutine(TheSequence());
+                    
+                }
+                
             }
  
         }
@@ -69,7 +80,12 @@ public class GtpdController2 : MonoBehaviour
         }
     }
     
-   
+   IEnumerator TheSequence() {
+        anim.SetBool("Fade", true);
+        yield return new WaitForSeconds(1f);
+        //yield return new WaitUntil(()=>blackPanel.color.a==1);
+        SceneManager.LoadScene("defeatCutscene");
+   }
 
     private void HandleMotor()
     {
