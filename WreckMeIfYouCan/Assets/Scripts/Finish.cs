@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Finish : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject player;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject blackPanel;
+    [SerializeField] private Animator anim;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -19,11 +21,16 @@ public class Finish : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject == player)
+        if (other.gameObject == player)
         {
-            SceneManager.LoadScene("win");
+            StartCoroutine(TheSequence());
         }
+    }
+    IEnumerator TheSequence() {
+        anim.SetBool("Fade", true);
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("win");
     }
 }

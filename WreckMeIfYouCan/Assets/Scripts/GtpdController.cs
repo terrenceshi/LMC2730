@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+
+using UnityEngine.SceneManagement;
+
 public class GtpdController : MonoBehaviour
 {
  
-    private const string HORIZONTAL = "Horizontal";
-    private const string VERTICAL = "Vertical";
+    //private const string HORIZONTAL = "Horizontal";
+    //private const string VERTICAL = "Vertical";
 
-    private float horizontalInput;
-    private float verticalInput;
-    private float currentSteerAngle;
-    private float currentBrakeForce;
-    private bool isBraking;
+    //private float horizontalInput;
+    //private float verticalInput;
+    //private float currentSteerAngle;
+    //private float currentBrakeForce;
+    //private bool isBraking;
 
-    [SerializeField] private float motorForce;
-    [SerializeField] private float brakeForce;
-    [SerializeField] private float maxSteerAngle;
+    //[SerializeField] private float motorForce;
+    //[SerializeField] private float brakeForce;
+    //[SerializeField] private float maxSteerAngle;
 
     //[SerializeField] private WheelCollider frontLeftWheelCollider;
     //[SerializeField] private WheelCollider frontRightWheelCollider;
@@ -26,13 +29,13 @@ public class GtpdController : MonoBehaviour
 
 
     public Transform player;
-    int MoveSpeed = 6;
-    int MaxDist = 20;
-    int MinDist = 10;
+    public int MoveSpeed = 6;
+    public int MaxDist = 20;
+    public int MinDist = 10;
  
- 
- 
- 
+    [SerializeField] private GameObject blackPanel;
+    [SerializeField] private Animator anim;
+
     void Start()
     {
  
@@ -41,20 +44,27 @@ public class GtpdController : MonoBehaviour
     void Update()
     {
         transform.LookAt(player);
-        Debug.Log(Vector3.Distance(transform.position, player.position));
+        //Debug.Log(Vector3.Distance(transform.position, player.position));
  
         if (Vector3.Distance(transform.position, player.position) >= MinDist)
         {
  
             transform.position += transform.forward * (MoveSpeed * Time.deltaTime);
  
- 
             if (Vector3.Distance(transform.position, player.position) <= MaxDist)
             {
                 //Here Call any function U want Like Shoot at here or something
+                StartCoroutine(TheSequence());
             }
  
         }
+    }
+
+    IEnumerator TheSequence() {
+        anim.SetBool("Fade", true);
+        yield return new WaitForSeconds(1f);
+        //yield return new WaitUntil(()=>blackPanel.color.a==1);
+        SceneManager.LoadScene("defeatCutscene");
     }
     
 }
