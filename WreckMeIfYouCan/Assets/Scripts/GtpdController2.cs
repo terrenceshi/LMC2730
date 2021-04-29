@@ -51,14 +51,15 @@ public class GtpdController2 : MonoBehaviour
 
     private void GetInput()
     {
-        transform.LookAt(player);
- 
+
         if (Vector3.Distance(transform.position, player.position) >= MinDist)
         {
  
             //transform.position += transform.forward * (MoveSpeed * Time.deltaTime);
  
             //horizontalInput = Input.GetAxis(HORIZONTAL);
+            transform.LookAt(player);
+            
             verticalInput = 2 * MoveSpeed;
  
             if (Vector3.Distance(transform.position, player.position) <= MaxDist)
