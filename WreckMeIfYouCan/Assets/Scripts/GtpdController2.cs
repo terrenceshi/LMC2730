@@ -11,7 +11,7 @@ public class GtpdController2 : MonoBehaviour
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
 
-    private float horizontalInput;
+    private float horizontalInput = 0;
     private float verticalInput;
     private float currentSteerAngle;
     private float currentBrakeForce;
@@ -33,8 +33,8 @@ public class GtpdController2 : MonoBehaviour
 
     [SerializeField] private Transform player;
     [SerializeField] private int MoveSpeed = 3;
-    [SerializeField] private int MaxDist = 20;
-    [SerializeField] private int MinDist = 10;
+    [SerializeField] private int MaxDist = 120;
+    [SerializeField] private int MinDist = 20;
 
     //[SerializeField] private float loseCondition = 5f;
     [SerializeField] private GameObject blackPanel;
@@ -43,17 +43,23 @@ public class GtpdController2 : MonoBehaviour
     private void FixedUpdate()
     {
         GetInput();
-        HandleMotor();
-        HandleSteering();
-        UpdateWheels();
-        
+        if (!isBraking)
+        {
+            Debug.Log("not breaking");
+            HandleMotor();
+            HandleSteering();
+            UpdateWheels();
+        }
     }
 
     private void GetInput()
     {
 
-        if (Vector3.Distance(transform.position, player.position) >= MinDist)
+        Debug.Log(Vector3.Distance(transform.position, player.position));
+        if (Vector3.Distance(transform.position, player.position) <= MaxDist)
         {
+            isBraking = false;
+            Debug.Log("drive");
  
             //transform.position += transform.forward * (MoveSpeed * Time.deltaTime);
  
@@ -62,7 +68,7 @@ public class GtpdController2 : MonoBehaviour
             
             verticalInput = 2 * MoveSpeed;
  
-            if (Vector3.Distance(transform.position, player.position) <= MaxDist)
+            if (Vector3.Distance(transform.position, player.position) <= MinDist)
             {
                 //Here Call any function U want Like Shoot at here or something
                 Debug.Log("\nsup");
@@ -77,6 +83,8 @@ public class GtpdController2 : MonoBehaviour
         }
         else
         {
+            Debug.Log("break");
+            isBraking = true;
             ApplyBraking();
         }
     }
@@ -90,6 +98,7 @@ public class GtpdController2 : MonoBehaviour
 
     private void HandleMotor()
     {
+        Debug.Log("HandleMotor");
         frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
         frontRightWheelCollider.motorTorque = verticalInput * motorForce;
         currentBrakeForce = isBraking ? brakeForce : 0f;
@@ -98,6 +107,7 @@ public class GtpdController2 : MonoBehaviour
 
     private void HandleSteering()
     {
+        Debug.Log("HandleSteering");
         currentSteerAngle = maxSteerAngle * horizontalInput;
         frontLeftWheelCollider.steerAngle = currentSteerAngle;
         frontRightWheelCollider.steerAngle = currentSteerAngle;
