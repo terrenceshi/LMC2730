@@ -32,7 +32,7 @@ public class GtpdController2 : MonoBehaviour
     [SerializeField] private Transform rearRightWheelTransform;
 
     [SerializeField] private Transform player;
-    [SerializeField] private int MoveSpeed = 4;
+    [SerializeField] private int MoveSpeed = 3;
     [SerializeField] private int MaxDist = 20;
     [SerializeField] private int MinDist = 10;
 
@@ -51,14 +51,15 @@ public class GtpdController2 : MonoBehaviour
 
     private void GetInput()
     {
-        transform.LookAt(player);
- 
+
         if (Vector3.Distance(transform.position, player.position) >= MinDist)
         {
  
             //transform.position += transform.forward * (MoveSpeed * Time.deltaTime);
  
             //horizontalInput = Input.GetAxis(HORIZONTAL);
+            transform.LookAt(player);
+            
             verticalInput = 2 * MoveSpeed;
  
             if (Vector3.Distance(transform.position, player.position) <= MaxDist)
