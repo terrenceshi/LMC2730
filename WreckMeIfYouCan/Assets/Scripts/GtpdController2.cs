@@ -36,7 +36,7 @@ public class GtpdController2 : MonoBehaviour
     [SerializeField] private int MaxDist = 20;
     [SerializeField] private int MinDist = 10;
 
-    [SerializeField] private float loseCondition = 5f;
+    //[SerializeField] private float loseCondition = 5f;
     [SerializeField] private GameObject blackPanel;
     [SerializeField] private Animator anim;
  
@@ -66,14 +66,14 @@ public class GtpdController2 : MonoBehaviour
             {
                 //Here Call any function U want Like Shoot at here or something
                 Debug.Log("\nsup");
-                loseCondition -= Time.deltaTime;
-                if(loseCondition <= 0) {
-                    StartCoroutine(TheSequence());
+                //loseCondition -= Time.deltaTime;
+                //if(loseCondition <= 0) {
+                    //StartCoroutine(TheSequence());
                     
-                }
-                
+                //}
+                StartCoroutine(TheSequence());
             }
- 
+            
         }
         else
         {
