@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WinCutsceneStart : MonoBehaviour
 {
@@ -16,5 +17,6 @@ public class WinCutsceneStart : MonoBehaviour
     {
         Cam1.SetActive(true);
         yield return new WaitForSeconds(4.15f);
+        SceneManager.LoadScene("winScreen");
     }
 }
