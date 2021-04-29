@@ -2157,8 +2157,8 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.022
   m_SuspensionSpring:
-    spring: 100000
-    damper: 4500
+    spring: 90000
+    damper: 1500
     targetPosition: 0.5
   m_SuspensionDistance: 0.025
   m_ForceAppPointDistance: 0
@@ -2602,7 +2602,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148704465958}
   serializedVersion: 2
-  m_Mass: 1500
+  m_Mass: 2000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -3089,7 +3089,7 @@ WheelCollider:
   m_Radius: 0.017
   m_SuspensionSpring:
     spring: 90000
-    damper: 4500
+    damper: 1500
     targetPosition: 0.5
   m_SuspensionDistance: 0.005
   m_ForceAppPointDistance: 0
@@ -4306,8 +4306,8 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.022
   m_SuspensionSpring:
-    spring: 100000
-    damper: 4500
+    spring: 90000
+    damper: 1500
     targetPosition: 0.5
   m_SuspensionDistance: 0.025
   m_ForceAppPointDistance: 0
@@ -4686,8 +4686,8 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.022
   m_SuspensionSpring:
-    spring: 100000
-    damper: 4500
+    spring: 90000
+    damper: 1500
     targetPosition: 0.5
   m_SuspensionDistance: 0.025
   m_ForceAppPointDistance: 0
@@ -5863,7 +5863,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1436829246}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 273.9, y: 7.4, z: 207.5}
   m_LocalScale: {x: 31.42304, y: 13.239034, z: 58.59363}
   m_Children: []
@@ -6765,7 +6765,7 @@ WheelCollider:
   m_Radius: 0.017
   m_SuspensionSpring:
     spring: 90000
-    damper: 4500
+    damper: 1500
     targetPosition: 0.5
   m_SuspensionDistance: 0.005
   m_ForceAppPointDistance: 0
@@ -7408,7 +7408,7 @@ WheelCollider:
   m_Radius: 0.017
   m_SuspensionSpring:
     spring: 90000
-    damper: 4500
+    damper: 1500
     targetPosition: 0.5
   m_SuspensionDistance: 0.005
   m_ForceAppPointDistance: 0
@@ -11929,8 +11929,8 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.022
   m_SuspensionSpring:
-    spring: 100000
-    damper: 4500
+    spring: 90000
+    damper: 1500
     targetPosition: 0.5
   m_SuspensionDistance: 0.025
   m_ForceAppPointDistance: 0
@@ -12100,7 +12100,7 @@ WheelCollider:
   m_Radius: 0.017
   m_SuspensionSpring:
     spring: 90000
-    damper: 4500
+    damper: 1500
     targetPosition: 0.5
   m_SuspensionDistance: 0.005
   m_ForceAppPointDistance: 0
@@ -12397,7 +12397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   motorForce: 3000
-  brakeForce: 4000
+  brakeForce: 6000
   maxSteerAngle: 30
   frontLeftWheelCollider: {fileID: 1934064132}
   frontRightWheelCollider: {fileID: 1744621333}
@@ -13865,7 +13865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GTPD: {fileID: 919132148704465958}
-  motorForce: 4000
+  motorForce: 3000
   brakeForce: 6000
   maxSteerAngle: 30
   frontLeftWheelCollider: {fileID: 1066022580}
@@ -13898,7 +13898,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5929386415069283689}
   serializedVersion: 2
-  m_Mass: 1500
+  m_Mass: 2000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
