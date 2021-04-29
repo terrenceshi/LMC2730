@@ -37,6 +37,15 @@ public class defeatCutscene : MonoBehaviour
         StartCoroutine(TheSequence());
     }
 
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            StopAllCoroutines();
+            StartCoroutine(theEnd());
+        }
+    }
+
     IEnumerator TheSequence() {
 
         Cam2.SetActive(false);
@@ -45,6 +54,11 @@ public class defeatCutscene : MonoBehaviour
     	Cam2.SetActive(true);
     	Cam1.SetActive(false);
         yield return new WaitForSeconds(6f);
+        
+        StartCoroutine(theEnd());
+    }
+
+    IEnumerator theEnd() {
         anim.SetBool("Fade", true);
         grassAnim.SetBool("soundFade", true);
         gtpd0Anim.SetBool("soundFade", true);
