@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class carController : MonoBehaviour
+public class scriptedController : MonoBehaviour
 {
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
@@ -12,13 +12,13 @@ public class carController : MonoBehaviour
     private float currentSteerAngle;
     private float currentBrakeForce;
     private bool isBraking;
-
-    [SerializeField] private GameObject GTPD;
     
     [SerializeField] private float motorForce;
     [SerializeField] private float brakeForce;
     [SerializeField] private float maxSteerAngle;
 
+    [SerializeField] private int MoveSpeed = 4;
+    
     [SerializeField] private WheelCollider frontLeftWheelCollider;
     [SerializeField] private WheelCollider frontRightWheelCollider;
     [SerializeField] private WheelCollider rearLeftWheelCollider;
@@ -29,10 +29,16 @@ public class carController : MonoBehaviour
     [SerializeField] private Transform rearLeftWheelTransform;
     [SerializeField] private Transform rearRightWheelTransform;
 
+    [SerializeField] private float totalTime;
+    [SerializeField] private float waitTime = 0f;
+
+    private float startMovingTime;
+
     public float mass = -0.9f;
     void Start()
     {
         GetComponent<Rigidbody>().centerOfMass = new Vector3(0f, mass, 0f);
+        startMovingTime = totalTime - waitTime;
     }
 
     private void FixedUpdate()
@@ -41,9 +47,6 @@ public class carController : MonoBehaviour
         HandleMotor();
         HandleSteering();
         UpdateWheels();
-        if (Vector3.Dot(transform.up, Vector3.down) > 0){
-            //Debug.Log("\nupside down");
-        }
         
     }
 
@@ -57,13 +60,29 @@ public class carController : MonoBehaviour
 
     private void GetInput()
     {
-        horizontalInput = Input.GetAxis(HORIZONTAL);
-        verticalInput = Input.GetAxis(VERTICAL);
-        //verticalInput = 2f;
+        totalTime -= Time.deltaTime;
 
-        //Debug.Log("\nhorizontalInput: " + horizontalInput + ", verticalInput: " + verticalInput);
-
-        isBraking = Input.GetKey(KeyCode.Space);
+        if(totalTime > startMovingTime) {
+            verticalInput = 0;
+        }
+        else {
+            //Debug.Log("wait time over");
+            if (isBraking == false)
+            {
+                verticalInput = 2 * MoveSpeed;
+            }
+            else
+            {
+                verticalInput = 0;
+            }
+        }
+        
+        if (totalTime <= 0f)
+        {
+            
+            isBraking = true;
+            
+        }
     }
 
     private void ApplyBraking()
@@ -102,13 +121,5 @@ public class carController : MonoBehaviour
 
         //Debug.Log("\nrot: " + rot + ", pos: " + pos);
     }
-    
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject == GTPD)
-        {
-            Debug.Log("hit");
-            //insert failure scene
-        }
-    }
+
 }

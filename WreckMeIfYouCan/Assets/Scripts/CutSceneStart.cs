@@ -14,6 +14,15 @@ public class CutSceneStart : MonoBehaviour
         StartCoroutine(TheSequence());
     }
 
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            end();
+            StopAllCoroutines();
+        }
+    }
+
     IEnumerator TheSequence() {
         Cam4.SetActive(false);
         Cam3.SetActive(false);
@@ -26,7 +35,13 @@ public class CutSceneStart : MonoBehaviour
         Cam3.SetActive(true);
         Cam2.SetActive(false);
         yield return new WaitForSeconds(2.1f);
+        end();
+    }
+
+    private void end() {
         Cam4.SetActive(true);
         Cam3.SetActive(false);
+        Cam2.SetActive(false);
+        Cam1.SetActive(false);
     }
 }

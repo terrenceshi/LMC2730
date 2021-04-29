@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/HowToPlay.unity
+    guid: f14fe5413780844239240427b6d7606e
+  - enabled: 1
+    path: Assets/Scenes/test.unity
+    guid: 1abbc24eb8e2b204e98633ec1b4e26b8
+  - enabled: 1
+    path: Assets/Scenes/defeatCutscene.unity
+    guid: 5fc4ac678d106d3409798e77ec7bed8c
+  - enabled: 1
+    path: Assets/Scenes/defeatScreen.unity
+    guid: 30a2acb240c45da4696986fc4ed9f3fd
   m_configObjects: {}
