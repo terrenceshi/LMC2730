@@ -35,6 +35,8 @@ public class GtpdController2 : MonoBehaviour
     [SerializeField] private int MoveSpeed = 4;
     [SerializeField] private int MaxDist = 20;
     [SerializeField] private int MinDist = 10;
+
+    [SerializeField] private float loseCondition = 5f;
  
     private void FixedUpdate()
     {
@@ -61,6 +63,11 @@ public class GtpdController2 : MonoBehaviour
             {
                 //Here Call any function U want Like Shoot at here or something
                 Debug.Log("\nsup");
+                loseCondition -= Time.deltaTime;
+                if(loseCondition <= 0) {
+                    SceneManager.LoadScene("defeatCutscene");
+                }
+                
             }
  
         }

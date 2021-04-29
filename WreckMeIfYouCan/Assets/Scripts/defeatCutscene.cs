@@ -53,5 +53,7 @@ public class defeatCutscene : MonoBehaviour
         gtpd3Anim.SetBool("soundFade", true);
         wreckAnim.SetBool("soundFade", true);
         //yield return new WaitUntil(()=>blackPanel.color.a==1);
+        yield return new WaitForSeconds(2f);
+        Debug.Log("you can rest now"); //insert end menu scene here
     }
 }
