@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -25,14 +24,10 @@ public class GtpdController : MonoBehaviour
     //[SerializeField] private WheelCollider rearLeftWheelCollider;
     //[SerializeField] private WheelCollider rearRightWheelCollider;
 
-    [SerializeField] private Transform frontLeftWheelTransform;
-    [SerializeField] private Transform frontRightWheelTransform;
-    [SerializeField] private Transform rearLeftWheelTransform;
-    [SerializeField] private Transform rearRightWheelTransform;
 
     public Transform player;
-    int MoveSpeed = 4;
-    int MaxDist = 40;
+    int MoveSpeed = 6;
+    int MaxDist = 20;
     int MinDist = 10;
  
  
@@ -48,16 +43,15 @@ public class GtpdController : MonoBehaviour
         transform.LookAt(player);
         Debug.Log(Vector3.Distance(transform.position, player.position));
  
-        if (Vector3.Distance(transform.position, player.position) <= MaxDist)
+        if (Vector3.Distance(transform.position, player.position) >= MinDist)
         {
  
             transform.position += transform.forward * (MoveSpeed * Time.deltaTime);
  
  
-            if (Vector3.Distance(transform.position, player.position) <= MinDist)
+            if (Vector3.Distance(transform.position, player.position) <= MaxDist)
             {
-                Debug.Log("arrested");
-                //Arrested Cut Scene
+                //Here Call any function U want Like Shoot at here or something
             }
  
         }
