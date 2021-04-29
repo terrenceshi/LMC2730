@@ -32,7 +32,7 @@ public class GtpdController2 : MonoBehaviour
     [SerializeField] private Transform rearRightWheelTransform;
 
     [SerializeField] private Transform player;
-    [SerializeField] private int MoveSpeed = 4;
+    [SerializeField] private int MoveSpeed = 3;
     [SerializeField] private int MaxDist = 20;
     [SerializeField] private int MinDist = 10;
 

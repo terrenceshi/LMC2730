@@ -2610,26 +2610,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &593417732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148704465958}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48efc1217525046349eebefda6621a10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  motorForce: 0
-  brakeForce: 0
-  maxSteerAngle: 0
-  frontLeftWheelTransform: {fileID: 5777245582834007161}
-  frontRightWheelTransform: {fileID: 9045034325295481718}
-  rearLeftWheelTransform: {fileID: 7210127809728221948}
-  rearRightWheelTransform: {fileID: 4977281649385447940}
-  player: {fileID: 6413892417498062803}
 --- !u!195 &593417733
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -12346,7 +12326,6 @@ GameObject:
   - component: {fileID: 543450652976320156}
   - component: {fileID: 593417731}
   - component: {fileID: 593417730}
-  - component: {fileID: 593417732}
   - component: {fileID: 593417733}
   - component: {fileID: 919132148704465960}
   - component: {fileID: 919132148704465959}
@@ -12408,7 +12387,7 @@ MonoBehaviour:
   rearLeftWheelTransform: {fileID: 7210127809728221948}
   rearRightWheelTransform: {fileID: 4977281649385447940}
   player: {fileID: 6413892417498062803}
-  MoveSpeed: 4
+  MoveSpeed: 3
   MaxDist: 20
   MinDist: 10
   loseCondition: 5
