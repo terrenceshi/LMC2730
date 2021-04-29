@@ -37,6 +37,8 @@ public class GtpdController2 : MonoBehaviour
     [SerializeField] private int MinDist = 10;
 
     [SerializeField] private float loseCondition = 5f;
+    [SerializeField] private GameObject blackPanel;
+    [SerializeField] private Animator anim;
  
     private void FixedUpdate()
     {
@@ -65,7 +67,8 @@ public class GtpdController2 : MonoBehaviour
                 Debug.Log("\nsup");
                 loseCondition -= Time.deltaTime;
                 if(loseCondition <= 0) {
-                    SceneManager.LoadScene("defeatCutscene");
+                    StartCoroutine(TheSequence());
+                    
                 }
                 
             }
@@ -77,7 +80,12 @@ public class GtpdController2 : MonoBehaviour
         }
     }
     
-   
+   IEnumerator TheSequence() {
+        anim.SetBool("Fade", true);
+        yield return new WaitForSeconds(1f);
+        //yield return new WaitUntil(()=>blackPanel.color.a==1);
+        SceneManager.LoadScene("defeatCutscene");
+   }
 
     private void HandleMotor()
     {
