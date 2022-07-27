@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/HowToPlay.unity
+    guid: f14fe5413780844239240427b6d7606e
+  - enabled: 1
+    path: Assets/Scenes/test.unity
+    guid: 1abbc24eb8e2b204e98633ec1b4e26b8
+  - enabled: 1
+    path: Assets/Scenes/defeatCutscene.unity
+    guid: 5fc4ac678d106d3409798e77ec7bed8c
+  - enabled: 1
+    path: Assets/Scenes/defeatScreen.unity
+    guid: 30a2acb240c45da4696986fc4ed9f3fd
+  - enabled: 1
+    path: Assets/Scenes/winScreen.unity
+    guid: b434716694666c7478f4e1ab44059528
+  - enabled: 1
+    path: Assets/Scenes/win.unity
+    guid: 704f53780d54f5b46ace322511d4a7da
+  m_configObjects: {}
