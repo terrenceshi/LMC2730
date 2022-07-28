@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 using UnityEngine.SceneManagement;
 
+using MikrosClient;
+using MikrosClient.Analytics;
+
+
 public class GtpdController : MonoBehaviour
 {
  
@@ -54,6 +58,7 @@ public class GtpdController : MonoBehaviour
             if (Vector3.Distance(transform.position, player.position) <= MaxDist)
             {
                 //Here Call any function U want Like Shoot at here or something
+                
                 StartCoroutine(TheSequence());
             }
  
@@ -61,10 +66,25 @@ public class GtpdController : MonoBehaviour
     }
 
     IEnumerator TheSequence() {
+        
+        
+        
         anim.SetBool("Fade", true);
         yield return new WaitForSeconds(1f);
         //yield return new WaitUntil(()=>blackPanel.color.a==1);
         SceneManager.LoadScene("defeatCutscene");
+
+        MikrosManager.Instance.AnalyticsController.LogEvent("Player Caught by Police", (Hashtable customEventWholeData) =>
+        {
+            Debug.Log("You lose hoe (Mikros succesful log)");
+        },
+        onFailure =>
+        {
+            Debug.Log("You lost but Mikros did not log it.");
+        });
+        MikrosManager.Instance.AnalyticsController.FlushEvents();
+
+        //SceneManager.UnloadSceneAsync("test");
     }
     
 }
