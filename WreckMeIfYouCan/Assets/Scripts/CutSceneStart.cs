@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using MikrosClient;
+using MikrosClient.Analytics;
+
 public class CutSceneStart : MonoBehaviour
 {
 	public GameObject Cam1;
@@ -11,7 +14,9 @@ public class CutSceneStart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         StartCoroutine(TheSequence());
+
     }
 
     void Update()

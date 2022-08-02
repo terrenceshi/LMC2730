@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.71129435, g: 0.8008629, b: 0.88006836, a: 1}
+  m_IndirectSpecularColor: {r: 0.6931741, g: 0.7808154, b: 0.8645528, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3002,7 +3002,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651992380}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &651992383
 Camera:
   m_ObjectHideFlags: 0
@@ -4856,6 +4856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   startBright: 1
+  myLight: {fileID: 0}
 --- !u!108 &1153179888
 Light:
   m_ObjectHideFlags: 0
@@ -5275,6 +5276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   startBright: 0
+  myLight: {fileID: 0}
 --- !u!108 &1241168633
 Light:
   m_ObjectHideFlags: 0
@@ -6836,7 +6838,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1753497987}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1753497990
 Camera:
   m_ObjectHideFlags: 0
@@ -7208,7 +7210,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821451159}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1821451162
 Camera:
   m_ObjectHideFlags: 0
@@ -13773,6 +13775,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4e7147566ab904a8edcd1feb619290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontalInput: 0
+  verticalInput: 0
+  currentSteerAngle: 0
+  currentBrakeForce: 0
+  isBraking: 0
   GTPD: {fileID: 0}
   motorForce: 3000
   brakeForce: 6000

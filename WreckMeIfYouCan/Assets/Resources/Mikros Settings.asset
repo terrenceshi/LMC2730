@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   appGameID: tg-62e1650452892
   apiKeyProduction: M33t9pp46IPLpFm7aREIYXEUfMRpUGc5
-  apiKeyQA: rry9250O63lt6VLFOCjCII8TFiTSrHt3
-  apiKeyDevelopment: VosvXUK8OBI9wXU2iXnifmyt5Zk4BznD
+  apiKeyQA: 
+  apiKeyDevelopment: 
   apiKeyToUse: 0
   autoInitializeAtStart: 1
   autoTrackSession: 1

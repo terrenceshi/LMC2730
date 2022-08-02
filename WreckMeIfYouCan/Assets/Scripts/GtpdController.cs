@@ -42,7 +42,8 @@ public class GtpdController : MonoBehaviour
 
     void Start()
     {
- 
+        //MikrosManager.Instance.InitializeMikrosSDK();
+        //Debug.Log("Mikros Initialized");
     }
  
     void Update()
