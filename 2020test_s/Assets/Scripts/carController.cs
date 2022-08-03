@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using MikrosClient;
+using MikrosClient.Analytics;
+
 public class carController : MonoBehaviour
 {
     private const string HORIZONTAL = "Horizontal";
@@ -33,6 +36,10 @@ public class carController : MonoBehaviour
     void Start()
     {
         GetComponent<Rigidbody>().centerOfMass = new Vector3(0f, mass, 0f);
+
+        MikrosManager.Instance.InitializeMikrosSDK();
+
+        Debug.Log("mikros initalized");
     }
 
     private void FixedUpdate()
